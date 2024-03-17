@@ -1,11 +1,12 @@
-import RegisterLoginLayout from './auth/layout/RegisterLoginLayout';
+import { AuthProvider } from './libs/context/AuthProvider';
+import AppRoute from './routes/route';
 
 function App() {
 
   return (
-    <>
-      <RegisterLoginLayout />
-    </>
+    <AuthProvider>
+      <AppRoute />
+    </AuthProvider>
   )
 }
 
