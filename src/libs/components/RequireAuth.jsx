@@ -6,7 +6,7 @@ function RequireAuth({ allowRole }) {
     const { auth } = useAuth()
     const location = useLocation()
     return (
-        auth?.userRole === allowRole
+        allowRole.includes(auth?.userRole)
             ? <Outlet />
             : <Navigate to='/' state={{ from: location }} replace />
     )
