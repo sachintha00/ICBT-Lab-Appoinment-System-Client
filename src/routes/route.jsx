@@ -7,21 +7,23 @@ import RequireAuth from './../libs/components/RequireAuth';
 import DashboardLayout from '../dashboard/layouts/DashboardLayout';
 import Appointment from '../dashboard/components/appointment';
 import Settings from '../dashboard/components/settings';
+import ReportUpload from './../dashboard/components/reportUpload';
+import Report from './../dashboard/components/reportView';
 
 function AppRoute() {
     return (
         <Routes>
             <Route path='/' element={<MainLayout />}>
                 <Route path='/' element={<RegisterLoginLayout />} />
-                {/* <Route element={<RequireAuth allowRole={"ADMIN"} />}>
-                    <Route path='/dashboard' element={<Dashboard />} />
-                </Route> */}
-                {/* <Route path='/dashboard' element={<Dashboard />} />
-                <Route path='/dashboard/test' element={<Dashboard />} /> */}
-                <Route element={<DashboardLayout />}>
-                    <Route path='/dashboard' element={<Dashboard />} />
-                    <Route path='/dashboard/appointment' element={<Appointment />} />
-                    <Route path='/dashboard/settings' element={<Settings />} />
+
+                <Route element={<RequireAuth allowRole={["USER", "ADMIN", "TECH"]} />}>
+                    <Route path='/' element={<DashboardLayout />}>
+                        <Route path='/dashboard' element={<Dashboard />} />
+                        <Route path='/dashboard/appointment' element={<Appointment />} />
+                        <Route path='/dashboard/settings' element={<Settings />} />
+                        <Route path='/dashboard/report_section' element={<ReportUpload />} />
+                        <Route path='/dashboard/report' element={<Report />} />
+                    </Route>
                 </Route>
             </Route>
 
